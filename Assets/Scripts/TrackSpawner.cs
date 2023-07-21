@@ -63,7 +63,7 @@ public class TrackSpawner : MonoBehaviour
         float newZ = tracks[tracks.Count - 1].transform.position.z + offset;
 
        //active childrens
-        int num = Random.Range(1,10);
+        // int num = Random.Range(1,10);
 
         Transform[] allChildren = tracks[tracks.Count - 1].transform.GetComponentsInChildren<Transform>(true);
         for(int i=0; i<allChildren.Length; i++)
@@ -81,6 +81,7 @@ public class TrackSpawner : MonoBehaviour
 
                 if(allChildren[i].gameObject.name == "Cube")
                 {
+                     int num = Random.Range(1,10);
                   if(num == 1)
                         {
                             allChildren[i].gameObject.tag = "Box_1";
@@ -147,7 +148,7 @@ public class TrackSpawner : MonoBehaviour
       {
          Debug.Log("TextureChange()");
 
-        int num = Random.Range(1,10);
+        // int num = Random.Range(1,10);
         for(int j=0; j<4; j++)
         { 
                 Transform[] allChildren = tracks[j].transform.GetComponentsInChildren<Transform>(true);
@@ -170,6 +171,7 @@ public class TrackSpawner : MonoBehaviour
 
                     if(allChildren[i].gameObject.name == "Cube")
                     {
+                         int num = Random.Range(1,10);
                        if(num == 1)
                         {
                             allChildren[i].gameObject.tag = "Box_1";

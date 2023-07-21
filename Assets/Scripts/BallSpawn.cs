@@ -318,7 +318,6 @@ public class BallSpawn : MonoBehaviour
                         PlayerController.score = PlayerController.score + 7;
                         PlayerController.collisionCounts[6] = 0;
                     }
-
            }
         }
         else if(collision.gameObject.tag == "Box_8") 

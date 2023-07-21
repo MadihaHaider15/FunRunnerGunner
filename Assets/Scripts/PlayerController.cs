@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour
             resetTrack = 1;
             desiredLane = 1;
             forwardSpeed = 8.0f;
+
+            TrackSpawnManager.TextureUpdate();  // To  update boxes texture 
             for(int i = 0; i < collisionCounts.Length; i++)
             {
                collisionCounts[i] = 0;
@@ -130,9 +132,10 @@ public class PlayerController : MonoBehaviour
             for(int i = 0; i < collisionCounts.Length; i++)
             {
                collisionCounts[i] = 0;
+            //   Debug.Log("player=>  collisionCounts = " + collisionCounts[i]);
             }
             
-           // TrackSpawnManager.TextureUpdate();
+           TrackSpawnManager.TextureUpdate();   // To  update boxes texture
             tempSpeed = forwardSpeed;
          
             Transform[] allChildren = TempRoad.transform.GetComponentsInChildren<Transform>(true);  // Hide Coins
