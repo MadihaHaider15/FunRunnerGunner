@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     public static int collisionCount, life;//Counting Ball hits
     public static bool restartTemp;
-    public static int[] collisionCounts = new int[15];
+    public static int[] collisionCounts = new int[9];
     GameObject[] Coins;
     GameObject TempRoad;
 

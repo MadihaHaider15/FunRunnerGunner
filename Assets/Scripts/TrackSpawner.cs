@@ -62,27 +62,36 @@ public class TrackSpawner : MonoBehaviour
         tracks.Remove(movedTrack);
         float newZ = tracks[tracks.Count - 1].transform.position.z + offset;
 
-       //active childrens
-        // int num = Random.Range(1,10);
 
-        Transform[] allChildren = tracks[tracks.Count - 1].transform.GetComponentsInChildren<Transform>(true);
+        Transform[] allChildren = movedTrack.transform.GetComponentsInChildren<Transform>(true);
+
+      //  Debug.Log("movedTrack = " + movedTrack);
+
         for(int i=0; i<allChildren.Length; i++)
         {  
             if(allChildren[i].gameObject.activeInHierarchy)
             {
-                  Debug.Log("All Active Move Track");
+                if(allChildren[i].gameObject.name == "Cube")
+                    {
+                        Debug.Log("allChildren[i].gameObject.tag Active = " + allChildren[i].gameObject.tag);
+                    }
             } 
             else{
 
+                   if(allChildren[i].gameObject.name == "Cube")
+                    {
+                        Debug.Log("allChildren[i].gameObject.tag inActive = " + allChildren[i].gameObject.tag);
+                    }
                 allChildren[i].gameObject.SetActive(true);
+            }
                 
-                Renderer rend = allChildren[i].gameObject.GetComponent<Renderer>();
-            
+                    Renderer rend = allChildren[i].gameObject.GetComponent<Renderer>();
 
-                if(allChildren[i].gameObject.name == "Cube")
-                {
-                     int num = Random.Range(1,10);
-                  if(num == 1)
+                    if(allChildren[i].gameObject.name == "Cube")
+                    {
+                        // Debug.Log("allChildren[i].gameObject.tag" + allChildren[i].gameObject.tag);
+                         int num = Random.Range(1,10);
+                       if(num == 1)
                         {
                             allChildren[i].gameObject.tag = "Box_1";
                             rend.material.mainTexture = texture[0];
@@ -109,7 +118,7 @@ public class TrackSpawner : MonoBehaviour
                         }
                         else if(num == 6) 
                         {
-                            allChildren[i].gameObject.tag = "Box_6";
+                            allChildren[i].gameObject.tag = "Box_6";    //
                             rend.material.mainTexture = texture[5];
                         }
                         else if(num == 7) 
@@ -132,8 +141,8 @@ public class TrackSpawner : MonoBehaviour
                             allChildren[i].gameObject.tag = "Box_10";
                             rend.material.mainTexture = texture[9];
                         }
-                   }
-           }
+                    }
+        
         }
 
         //end

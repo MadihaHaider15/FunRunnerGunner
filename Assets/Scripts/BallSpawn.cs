@@ -442,77 +442,77 @@ public class BallSpawn : MonoBehaviour
            }
 
         }
-        // else if(collision.gameObject.tag == "Box_10") 
-        // {
-        //     if( PlayerController.FireBall > 0)
-        //     {
-        //         collision.gameObject.SetActive(false);
-        //         gameObject.SetActive(false);
-        //         FireBoxDestroySound();
-        //          PlayerController.collisionCounts[10] = 0;
-        //          PlayerController.score = PlayerController.score + 11;
-        //     }
-        //     if( PlayerController.FireBall == 0 )   
-        //     {
-        //                Renderer rend = collision.gameObject.GetComponent<Renderer>();
-        //                 PlayerController.collisionCounts[10] =  PlayerController.collisionCounts[10] + 1;
+        else if(collision.gameObject.tag == "Box_10") 
+        {
+            if( PlayerController.FireBall > 0)
+            {
+                collision.gameObject.SetActive(false);
+                gameObject.SetActive(false);
+                FireBoxDestroySound();
+                 PlayerController.collisionCounts[10] = 0;
+                 PlayerController.score = PlayerController.score + 11;
+            }
+            if( PlayerController.FireBall == 0 )   
+            {
+                       Renderer rend = collision.gameObject.GetComponent<Renderer>();
+                        PlayerController.collisionCounts[10] =  PlayerController.collisionCounts[10] + 1;
                         
-        //                 if(PlayerController.collisionCounts[10] == 0)  
-        //                 {
-        //                     rend.material.mainTexture = texture[10];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 1)
-        //                 {
-        //                     rend.material.mainTexture = texture[9];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 2)
-        //                 {
-        //                     rend.material.mainTexture = texture[8];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 3)
-        //                 {
-        //                     rend.material.mainTexture = texture[7];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 4)
-        //                 {
-        //                     rend.material.mainTexture = texture[6];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 5)
-        //                 {
-        //                     rend.material.mainTexture = texture[5];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 6)
-        //                 {
-        //                     rend.material.mainTexture = texture[4];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 7)
-        //                 {
-        //                     rend.material.mainTexture = texture[3];
-        //                 }
-        //                 if(PlayerController.collisionCounts[10] == 8)
-        //                 {
-        //                     rend.material.mainTexture = texture[2];
-        //                 }
+                        if(PlayerController.collisionCounts[10] == 0)  
+                        {
+                            rend.material.mainTexture = texture[10];
+                        }
+                        if(PlayerController.collisionCounts[10] == 1)
+                        {
+                            rend.material.mainTexture = texture[9];
+                        }
+                        if(PlayerController.collisionCounts[10] == 2)
+                        {
+                            rend.material.mainTexture = texture[8];
+                        }
+                        if(PlayerController.collisionCounts[10] == 3)
+                        {
+                            rend.material.mainTexture = texture[7];
+                        }
+                        if(PlayerController.collisionCounts[10] == 4)
+                        {
+                            rend.material.mainTexture = texture[6];
+                        }
+                        if(PlayerController.collisionCounts[10] == 5)
+                        {
+                            rend.material.mainTexture = texture[5];
+                        }
+                        if(PlayerController.collisionCounts[10] == 6)
+                        {
+                            rend.material.mainTexture = texture[4];
+                        }
+                        if(PlayerController.collisionCounts[10] == 7)
+                        {
+                            rend.material.mainTexture = texture[3];
+                        }
+                        if(PlayerController.collisionCounts[10] == 8)
+                        {
+                            rend.material.mainTexture = texture[2];
+                        }
 
-        //                 if(PlayerController.collisionCounts[10] == 9)
-        //                 {
-        //                     rend.material.mainTexture = texture[1];
-        //                 }  
-        //                  if(PlayerController.collisionCounts[10] == 10)
-        //                 {
-        //                     rend.material.mainTexture = texture[0];
-        //                 }  
+                        if(PlayerController.collisionCounts[10] == 9)
+                        {
+                            rend.material.mainTexture = texture[1];
+                        }  
+                         if(PlayerController.collisionCounts[10] == 10)
+                        {
+                            rend.material.mainTexture = texture[0];
+                        }  
 
-        //                 if(PlayerController.collisionCounts[10] == 11)
-        //                 {
-        //                     collision.gameObject.SetActive(false);
-        //                     gameObject.SetActive(false);
-        //                     BoxDestroySound();
-        //                     PlayerController.score = PlayerController.score + 11;
-        //                     PlayerController.collisionCounts[10] = 0;
-        //                 }
-        //     }
-        //}
+                        if(PlayerController.collisionCounts[10] == 11)
+                        {
+                            collision.gameObject.SetActive(false);
+                            gameObject.SetActive(false);
+                            BoxDestroySound();
+                            PlayerController.score = PlayerController.score + 11;
+                            PlayerController.collisionCounts[10] = 0;
+                        }
+            }
+        }
         // else if(collision.gameObject.tag == "Box_11") //Changes
         // {
         //     if( PlayerController.FireBall > 0)
