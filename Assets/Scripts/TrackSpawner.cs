@@ -54,8 +54,6 @@ public class TrackSpawner : MonoBehaviour
         tracks[1].transform.position = startTrack1Position;
         tracks[2].transform.position = startTrack2Position;
         tracks[3].transform.position =  startTrack3Position;
-
-        TextureChange();
     }
 
     public void MoveTrack()
@@ -80,46 +78,6 @@ public class TrackSpawner : MonoBehaviour
                 
                 Renderer rend = allChildren[i].gameObject.GetComponent<Renderer>();
             
-                // if(allChildren[i].gameObject.tag == "Box_1")
-                // {
-                //     rend.material.mainTexture = texture[0];
-                // }
-                // else if(allChildren[i].gameObject.tag == "Box_2") 
-                // {
-                //     rend.material.mainTexture = texture[1];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_3") 
-                // {
-                //     rend.material.mainTexture = texture[2];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_4") 
-                // {
-                //     rend.material.mainTexture = texture[3];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_5") 
-                // {
-                //     rend.material.mainTexture = texture[4];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_6") 
-                // {
-                //     rend.material.mainTexture = texture[5];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_7") 
-                // {
-                //     rend.material.mainTexture = texture[6];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_8") 
-                // {
-                //     rend.material.mainTexture = texture[7];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_9") 
-                // {
-                //     rend.material.mainTexture = texture[8];
-                // }
-                //  else if(allChildren[i].gameObject.tag == "Box_10") 
-                // {
-                //     rend.material.mainTexture = texture[9];
-                // }
 
                 if(allChildren[i].gameObject.name == "Cube")
                 {
@@ -262,48 +220,33 @@ public class TrackSpawner : MonoBehaviour
                             allChildren[i].gameObject.tag = "Box_10";
                             rend.material.mainTexture = texture[9];
                         }
-                   }
-                    
-                        // if(allChildren[i].gameObject.tag == "Box_1")
+                        //   else if(num == 11) 
                         // {
-                        //     rend.material.mainTexture = texture[0];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_2") 
-                        // {
-                        //     rend.material.mainTexture = texture[1];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_3") 
-                        // {
-                        //     rend.material.mainTexture = texture[2];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_4") 
-                        // {
-                        //     rend.material.mainTexture = texture[3];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_5") 
-                        // {
-                        //     rend.material.mainTexture = texture[4];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_6") 
-                        // {
-                        //     rend.material.mainTexture = texture[5];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_7") 
-                        // {
-                        //     rend.material.mainTexture = texture[6];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_8") 
-                        // {
-                        //     rend.material.mainTexture = texture[7];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_9") 
-                        // {
-                        //     rend.material.mainTexture = texture[8];
-                        // }
-                        // else if(allChildren[i].gameObject.tag == "Box_10") 
-                        // {
+                        //     allChildren[i].gameObject.tag = "Box_11";
                         //     rend.material.mainTexture = texture[9];
                         // }
+                        //   else if(num == 12) 
+                        // {
+                        //     allChildren[i].gameObject.tag = "Box_12";
+                        //     rend.material.mainTexture = texture[9];
+                        // }
+                        //   else if(num == 13) 
+                        // {
+                        //     allChildren[i].gameObject.tag = "Box_13";
+                        //     rend.material.mainTexture = texture[9];
+                        // }
+                        //   else if(num == 14) 
+                        // {
+                        //     allChildren[i].gameObject.tag = "Box_14";
+                        //     rend.material.mainTexture = texture[9];
+                        // }
+                        //   else if(num == 15) 
+                        // {
+                        //     allChildren[i].gameObject.tag = "Box_15";
+                        //     rend.material.mainTexture = texture[9];
+                        // }
+                   }
+                    
                 }
             }
 

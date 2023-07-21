@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Collections; 
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     public static int collisionCount, life;//Counting Ball hits
     public static bool restartTemp;
-    public static int[] collisionCounts = new int[10];
+    public static int[] collisionCounts = new int[15];
     GameObject[] Coins;
     GameObject TempRoad;
 
@@ -82,6 +82,12 @@ public class PlayerController : MonoBehaviour
          {
             anim.Play("Idle");
          }
+
+             //Speed increase in each second
+         if(forwardSpeed < maxSpeed && movement == true && Game_Manager.restart == false && life == 0 && gameEnd == false && gamePause == false)
+         {
+                  forwardSpeed += 0.05f * Time.deltaTime; 
+         }
         
         if(Game_Manager.restart == true)
         {
@@ -126,13 +132,13 @@ public class PlayerController : MonoBehaviour
                collisionCounts[i] = 0;
             }
             
-            TrackSpawnManager.TextureUpdate();
+           // TrackSpawnManager.TextureUpdate();
             tempSpeed = forwardSpeed;
          
             Transform[] allChildren = TempRoad.transform.GetComponentsInChildren<Transform>(true);  // Hide Coins
             for(int i=0; i<allChildren.Length; i++)
             {
-                if(allChildren[i].gameObject.tag == "Coin")
+                if(allChildren[i].gameObject.tag == "Coin" && allChildren[i].gameObject.tag == "Fire")
                 {
                     allChildren[i].gameObject.SetActive(false);  
                 }
@@ -150,7 +156,7 @@ public class PlayerController : MonoBehaviour
             if(movement != false)
             {
                 anim.Play("Run");
-                forwardSpeed = forwardSpeed + 0.5f;
+            
                 direction.z =  forwardSpeed;   
                 //Gather the inputs on which lane we should be
                 if (SwipeManager.swipeRight)

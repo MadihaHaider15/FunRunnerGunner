@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallSpawn : MonoBehaviour
 {
     public PlayerController PlayerController;
-    [SerializeField] float Force = 45f;
+    [SerializeField] float Force = 50f;   // 45f
     Rigidbody rb;
     Renderer Mainrend;
     public List<Texture> texture;
@@ -338,35 +338,35 @@ public class BallSpawn : MonoBehaviour
                     
                     if(PlayerController.collisionCounts[7] == 0)  
                     {
-                        rend.material.mainTexture = texture[7];
+                        rend.material.mainTexture = texture[7];   // 8
                     }
                     if(PlayerController.collisionCounts[7] == 1)
                     {
-                        rend.material.mainTexture = texture[6];
+                        rend.material.mainTexture = texture[6];  //7 
                     }
                     if(PlayerController.collisionCounts[7] == 2)
                     {
-                        rend.material.mainTexture = texture[5];
+                        rend.material.mainTexture = texture[5];   // 6
                     }
                     if(PlayerController.collisionCounts[7] == 3)
                     {
-                        rend.material.mainTexture = texture[4];
+                        rend.material.mainTexture = texture[4];   // 5
                     }
                     if(PlayerController.collisionCounts[7] == 4)
                     {
-                        rend.material.mainTexture = texture[3];
+                        rend.material.mainTexture = texture[3];  // 4
                     }
                     if(PlayerController.collisionCounts[7] == 5)
                     {
-                        rend.material.mainTexture = texture[2];
+                        rend.material.mainTexture = texture[2]; // 3
                     }
                     if(PlayerController.collisionCounts[7] == 6)
                     {
-                        rend.material.mainTexture = texture[1];
+                        rend.material.mainTexture = texture[1];  // 2
                     }
                     if(PlayerController.collisionCounts[7] == 7)
                     {
-                        rend.material.mainTexture = texture[0];
+                        rend.material.mainTexture = texture[0]; // 1
                     }
 
                     if(PlayerController.collisionCounts[7] == 8)
@@ -443,75 +443,382 @@ public class BallSpawn : MonoBehaviour
            }
 
         }
-        else if(collision.gameObject.tag == "Box_10") 
-        {
-            if( PlayerController.FireBall > 0)
-            {
-                collision.gameObject.SetActive(false);
-                gameObject.SetActive(false);
-                FireBoxDestroySound();
-                 PlayerController.collisionCounts[9] = 0;
-                 PlayerController.score = PlayerController.score + 10;
-            }
-            if( PlayerController.FireBall == 0 )   
-            {
-                       Renderer rend = collision.gameObject.GetComponent<Renderer>();
-                        PlayerController.collisionCounts[9] =  PlayerController.collisionCounts[9] + 1;
+        // else if(collision.gameObject.tag == "Box_10") 
+        // {
+        //     if( PlayerController.FireBall > 0)
+        //     {
+        //         collision.gameObject.SetActive(false);
+        //         gameObject.SetActive(false);
+        //         FireBoxDestroySound();
+        //          PlayerController.collisionCounts[10] = 0;
+        //          PlayerController.score = PlayerController.score + 11;
+        //     }
+        //     if( PlayerController.FireBall == 0 )   
+        //     {
+        //                Renderer rend = collision.gameObject.GetComponent<Renderer>();
+        //                 PlayerController.collisionCounts[10] =  PlayerController.collisionCounts[10] + 1;
                         
-                        if(PlayerController.collisionCounts[9] == 0)  
-                        {
-                            rend.material.mainTexture = texture[9];
-                        }
-                        if(PlayerController.collisionCounts[9] == 1)
-                        {
-                            rend.material.mainTexture = texture[8];
-                        }
-                        if(PlayerController.collisionCounts[9] == 2)
-                        {
-                            rend.material.mainTexture = texture[7];
-                        }
-                        if(PlayerController.collisionCounts[9] == 3)
-                        {
-                            rend.material.mainTexture = texture[6];
-                        }
-                        if(PlayerController.collisionCounts[9] == 4)
-                        {
-                            rend.material.mainTexture = texture[5];
-                        }
-                        if(PlayerController.collisionCounts[9] == 5)
-                        {
-                            rend.material.mainTexture = texture[4];
-                        }
-                        if(PlayerController.collisionCounts[9] == 6)
-                        {
-                            rend.material.mainTexture = texture[3];
-                        }
-                        if(PlayerController.collisionCounts[9] == 7)
-                        {
-                            rend.material.mainTexture = texture[2];
-                        }
-                        if(PlayerController.collisionCounts[9] == 8)
-                        {
-                            rend.material.mainTexture = texture[1];
-                        }
+        //                 if(PlayerController.collisionCounts[10] == 0)  
+        //                 {
+        //                     rend.material.mainTexture = texture[10];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 1)
+        //                 {
+        //                     rend.material.mainTexture = texture[9];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 2)
+        //                 {
+        //                     rend.material.mainTexture = texture[8];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 3)
+        //                 {
+        //                     rend.material.mainTexture = texture[7];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 4)
+        //                 {
+        //                     rend.material.mainTexture = texture[6];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 5)
+        //                 {
+        //                     rend.material.mainTexture = texture[5];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 6)
+        //                 {
+        //                     rend.material.mainTexture = texture[4];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 7)
+        //                 {
+        //                     rend.material.mainTexture = texture[3];
+        //                 }
+        //                 if(PlayerController.collisionCounts[10] == 8)
+        //                 {
+        //                     rend.material.mainTexture = texture[2];
+        //                 }
 
-                        if(PlayerController.collisionCounts[9] == 9)
-                        {
-                            rend.material.mainTexture = texture[0];
-                        }  
+        //                 if(PlayerController.collisionCounts[10] == 9)
+        //                 {
+        //                     rend.material.mainTexture = texture[1];
+        //                 }  
+        //                  if(PlayerController.collisionCounts[10] == 10)
+        //                 {
+        //                     rend.material.mainTexture = texture[0];
+        //                 }  
 
-                        if(PlayerController.collisionCounts[9] == 10)
-                        {
-                            collision.gameObject.SetActive(false);
-                            gameObject.SetActive(false);
-                            BoxDestroySound();
-                            PlayerController.score = PlayerController.score + 10;
-                            PlayerController.collisionCounts[9] = 0;
-                        }
-            }
+        //                 if(PlayerController.collisionCounts[10] == 11)
+        //                 {
+        //                     collision.gameObject.SetActive(false);
+        //                     gameObject.SetActive(false);
+        //                     BoxDestroySound();
+        //                     PlayerController.score = PlayerController.score + 11;
+        //                     PlayerController.collisionCounts[10] = 0;
+        //                 }
+        //     }
+        //}
+        // else if(collision.gameObject.tag == "Box_11") //Changes
+        // {
+        //     if( PlayerController.FireBall > 0)
+        //     {
+        //         collision.gameObject.SetActive(false);
+        //         gameObject.SetActive(false);
+        //         FireBoxDestroySound();
+        //          PlayerController.collisionCounts[11] = 0;
+        //          PlayerController.score = PlayerController.score + 12;
+        //     }
+        //     if( PlayerController.FireBall == 0 )   
+        //     {
+        //                Renderer rend = collision.gameObject.GetComponent<Renderer>();
+        //                 PlayerController.collisionCounts[11] =  PlayerController.collisionCounts[11] + 1;
+                        
+        //                 if(PlayerController.collisionCounts[11] == 0)  
+        //                 {
+        //                     rend.material.mainTexture = texture[11];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 1)
+        //                 {
+        //                     rend.material.mainTexture = texture[10];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 2)
+        //                 {
+        //                     rend.material.mainTexture = texture[9];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 3)
+        //                 {
+        //                     rend.material.mainTexture = texture[8];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 4)
+        //                 {
+        //                     rend.material.mainTexture = texture[7];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 5)
+        //                 {
+        //                     rend.material.mainTexture = texture[6];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 6)
+        //                 {
+        //                     rend.material.mainTexture = texture[5];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 7)
+        //                 {
+        //                     rend.material.mainTexture = texture[4];
+        //                 }
+        //                 if(PlayerController.collisionCounts[11] == 8)
+        //                 {
+        //                     rend.material.mainTexture = texture[3];
+        //                 }
 
-        }
-      
+        //                 if(PlayerController.collisionCounts[11] == 9)
+        //                 {
+        //                     rend.material.mainTexture = texture[2];
+        //                 }  
+        //                  if(PlayerController.collisionCounts[11] == 10)
+        //                 {
+        //                     rend.material.mainTexture = texture[1];
+        //                 }
+        //                   if(PlayerController.collisionCounts[11] == 11)
+        //                 {
+        //                     rend.material.mainTexture = texture[0];
+        //                 }  
+
+        //                 if(PlayerController.collisionCounts[11] == 12)
+        //                 {
+        //                     collision.gameObject.SetActive(false);
+        //                     gameObject.SetActive(false);
+        //                     BoxDestroySound();
+        //                     PlayerController.score = PlayerController.score + 12;
+        //                     PlayerController.collisionCounts[11] = 0;
+        //                 }
+        //     }
+        // }
+        // else if(collision.gameObject.tag == "Box_12") 
+        // {
+        //     if( PlayerController.FireBall > 0)
+        //     {
+        //         collision.gameObject.SetActive(false);
+        //         gameObject.SetActive(false);
+        //         FireBoxDestroySound();
+        //          PlayerController.collisionCounts[12] = 0;
+        //          PlayerController.score = PlayerController.score + 13;
+        //     }
+        //     if( PlayerController.FireBall == 0 )   
+        //     {
+        //                Renderer rend = collision.gameObject.GetComponent<Renderer>();
+        //                 PlayerController.collisionCounts[12] =  PlayerController.collisionCounts[12] + 1;
+                        
+        //                 if(PlayerController.collisionCounts[12] == 0)  
+        //                 {
+        //                     rend.material.mainTexture = texture[12];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 1)
+        //                 {
+        //                     rend.material.mainTexture = texture[11];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 2)
+        //                 {
+        //                     rend.material.mainTexture = texture[10];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 3)
+        //                 {
+        //                     rend.material.mainTexture = texture[9];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 4)
+        //                 {
+        //                     rend.material.mainTexture = texture[8];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 5)
+        //                 {
+        //                     rend.material.mainTexture = texture[7];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 6)
+        //                 {
+        //                     rend.material.mainTexture = texture[6];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 7)
+        //                 {
+        //                     rend.material.mainTexture = texture[5];
+        //                 }
+        //                 if(PlayerController.collisionCounts[12] == 8)
+        //                 {
+        //                     rend.material.mainTexture = texture[4];
+        //                 }
+
+        //                 if(PlayerController.collisionCounts[12] == 9)
+        //                 {
+        //                     rend.material.mainTexture = texture[3];
+        //                 }  
+        //                  if(PlayerController.collisionCounts[12] == 10)
+        //                 {
+        //                     rend.material.mainTexture = texture[2];
+        //                 }  
+        //                  if(PlayerController.collisionCounts[12] == 11)
+        //                 {
+        //                     rend.material.mainTexture = texture[1];
+        //                 }  
+        //                  if(PlayerController.collisionCounts[12] == 12)
+        //                 {
+        //                     rend.material.mainTexture = texture[0];
+        //                 }  
+
+        //                 if(PlayerController.collisionCounts[12] == 13)
+        //                 {
+        //                     collision.gameObject.SetActive(false);
+        //                     gameObject.SetActive(false);
+        //                     BoxDestroySound();
+        //                     PlayerController.score = PlayerController.score + 13;
+        //                     PlayerController.collisionCounts[12] = 0;
+        //                 }
+        //     }
+        // }
+        // else if(collision.gameObject.tag == "Box_13") 
+        // {
+        //     if( PlayerController.FireBall > 0)
+        //     {
+        //         collision.gameObject.SetActive(false);
+        //         gameObject.SetActive(false);
+        //         FireBoxDestroySound();
+        //          PlayerController.collisionCounts[13] = 0;
+        //          PlayerController.score = PlayerController.score + 14;
+        //     }
+        //     if( PlayerController.FireBall == 0 )   
+        //     {
+        //                Renderer rend = collision.gameObject.GetComponent<Renderer>();
+        //                 PlayerController.collisionCounts[13] =  PlayerController.collisionCounts[13] + 1;
+                        
+        //                 if(PlayerController.collisionCounts[13] == 0)  
+        //                 {
+        //                     rend.material.mainTexture = texture[13];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 1)
+        //                 {
+        //                     rend.material.mainTexture = texture[12];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 2)
+        //                 {
+        //                     rend.material.mainTexture = texture[11];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 3)
+        //                 {
+        //                     rend.material.mainTexture = texture[10];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 4)
+        //                 {
+        //                     rend.material.mainTexture = texture[9];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 5)
+        //                 {
+        //                     rend.material.mainTexture = texture[8];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 6)
+        //                 {
+        //                     rend.material.mainTexture = texture[7];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 7)
+        //                 {
+        //                     rend.material.mainTexture = texture[6];
+        //                 }
+        //                 if(PlayerController.collisionCounts[13] == 8)
+        //                 {
+        //                     rend.material.mainTexture = texture[5];
+        //                 }
+
+        //                 if(PlayerController.collisionCounts[13] == 9)
+        //                 {
+        //                     rend.material.mainTexture = texture[4];
+        //                 }  
+        //                   if(PlayerController.collisionCounts[13] == 10)
+        //                 {
+        //                     rend.material.mainTexture = texture[3];
+        //                 }  
+        //                   if(PlayerController.collisionCounts[13] == 11)
+        //                 {
+        //                     rend.material.mainTexture = texture[2];
+        //                 }  
+        //                   if(PlayerController.collisionCounts[13] == 9)
+        //                 {
+        //                     rend.material.mainTexture = texture[1];
+        //                 }  
+        //                   if(PlayerController.collisionCounts[13] == 9)
+        //                 {
+        //                     rend.material.mainTexture = texture[0];
+        //                 }  
+
+        //                 if(PlayerController.collisionCounts[13] == 14)
+        //                 {
+        //                     collision.gameObject.SetActive(false);
+        //                     gameObject.SetActive(false);
+        //                     BoxDestroySound();
+        //                     PlayerController.score = PlayerController.score + 14;
+        //                     PlayerController.collisionCounts[13] = 0;
+        //                 }
+        //     }
+        // }
+        // else if(collision.gameObject.tag == "Box_14") 
+        // {
+        //     if( PlayerController.FireBall > 0)
+        //     {
+        //         collision.gameObject.SetActive(false);
+        //         gameObject.SetActive(false);
+        //         FireBoxDestroySound();
+        //          PlayerController.collisionCounts[14] = 0;
+        //          PlayerController.score = PlayerController.score + 10;
+        //     }
+        //     if( PlayerController.FireBall == 0 )   
+        //     {
+        //                Renderer rend = collision.gameObject.GetComponent<Renderer>();
+        //                 PlayerController.collisionCounts[14] =  PlayerController.collisionCounts[14] + 1;
+                        
+        //                 if(PlayerController.collisionCounts[14] == 0)  
+        //                 {
+        //                     rend.material.mainTexture = texture[9];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 1)
+        //                 {
+        //                     rend.material.mainTexture = texture[8];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 2)
+        //                 {
+        //                     rend.material.mainTexture = texture[7];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 3)
+        //                 {
+        //                     rend.material.mainTexture = texture[6];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 4)
+        //                 {
+        //                     rend.material.mainTexture = texture[5];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 5)
+        //                 {
+        //                     rend.material.mainTexture = texture[4];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 6)
+        //                 {
+        //                     rend.material.mainTexture = texture[3];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 7)
+        //                 {
+        //                     rend.material.mainTexture = texture[2];
+        //                 }
+        //                 if(PlayerController.collisionCounts[14] == 8)
+        //                 {
+        //                     rend.material.mainTexture = texture[1];
+        //                 }
+
+        //                 if(PlayerController.collisionCounts[14] == 9)
+        //                 {
+        //                     rend.material.mainTexture = texture[0];
+        //                 }  
+
+        //                 if(PlayerController.collisionCounts[14] == 10)
+        //                 {
+        //                     collision.gameObject.SetActive(false);
+        //                     gameObject.SetActive(false);
+        //                     BoxDestroySound();
+        //                     PlayerController.score = PlayerController.score + 10;
+        //                     PlayerController.collisionCounts[14] = 0;
+        //                 }
+        //     }
+        // }
+        
         else{
             gameObject.SetActive(false);
         }

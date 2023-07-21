@@ -276,9 +276,8 @@ public class Game_Manager : MonoBehaviour
 
      public void MusicToggle()
     {
-        //Sprite tempSprite = Settings.transform.GetChild(1).gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite;
+       Sprite tempSprite = Settings.transform.GetChild(2).gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite;
 
-        Sprite tempSprite = Settings.transform.GetChild(2).gameObject.GetComponent<Image>().sprite;
           if(tempSprite == music_On)
           {
              FindObjectOfType<AudioManager>().StopSound("MainTheme");
@@ -291,9 +290,7 @@ public class Game_Manager : MonoBehaviour
              PlayerPrefs.SetInt("Music", 1);
           }
 
-        // Settings.transform.GetChild(1).gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = tempSprite;
-
-         Settings.transform.GetChild(2).gameObject.GetComponent<Image>().sprite = tempSprite;
+        Settings.transform.GetChild(2).gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = tempSprite;
     }
 
     public void BtnSound()
