@@ -140,9 +140,4 @@ MonoBehaviour:
   - {fileID: 2800000, guid: d78d07664b831474e862d03828050403, type: 3}
   - {fileID: 2800000, guid: a3fc46d39ce8b4e14b9dafe6e6e6d619, type: 3}
   - {fileID: 2800000, guid: e20f8a5dc14e74e5fa648ae49cef2194, type: 3}
-  - {fileID: 2800000, guid: 2d24fd5e51a654e24b7a58c37729a084, type: 3}
-  - {fileID: 2800000, guid: 574f9d56e8ae44a90ae46f00ca508f4c, type: 3}
-  - {fileID: 2800000, guid: 8a1ab1272fd72439a96673549230698d, type: 3}
-  - {fileID: 2800000, guid: 8e07cb7e9d0094f8ead39986759177d6, type: 3}
-  - {fileID: 2800000, guid: e220e27ecf3ab4308bf3b7f9f2589a89, type: 3}
   Ball_Mat: {fileID: 2100000, guid: 1a77a716d0c8d664d9362de2c2239efd, type: 2}

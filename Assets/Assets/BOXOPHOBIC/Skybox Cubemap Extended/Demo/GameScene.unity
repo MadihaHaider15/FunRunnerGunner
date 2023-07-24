@@ -48836,6 +48836,7 @@ MonoBehaviour:
   - {fileID: 1483794882}
   - {fileID: 1567713048}
   - {fileID: 1439603640}
+  TempNumArr: 
   spawnTriger: {fileID: 0}
   startTrackPosition: {x: 0, y: 0, z: 0}
   startTrack0Position: {x: 0, y: 0, z: 0}

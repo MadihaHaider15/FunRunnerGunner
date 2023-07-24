@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
              //Speed increase in each second
          if(forwardSpeed < maxSpeed && movement == true && Game_Manager.restart == false && life == 0 && gameEnd == false && gamePause == false)
          {
-                  forwardSpeed += 0.05f * Time.deltaTime; 
+                  forwardSpeed += 0.1f * Time.deltaTime; 
          }
         
         if(Game_Manager.restart == true)

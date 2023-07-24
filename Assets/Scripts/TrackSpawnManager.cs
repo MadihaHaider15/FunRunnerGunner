@@ -31,7 +31,6 @@ public class TrackSpawnManager : MonoBehaviour
 
     public void TextureUpdate()
     {
-      Debug.Log("Texture update from track spawner");
       TrackSpawner.TextureChange();
     }
 }
