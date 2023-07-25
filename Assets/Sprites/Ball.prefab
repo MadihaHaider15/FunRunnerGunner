@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerController: {fileID: 0}
-  Force: 45
+  Force: 50
   texture:
   - {fileID: 2800000, guid: 4cda8d3fef6cb4b4eb78c575a0e9fb99, type: 3}
   - {fileID: 2800000, guid: eb639c082ebc24bd9a3a86b5cb16cd67, type: 3}

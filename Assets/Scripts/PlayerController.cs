@@ -86,7 +86,8 @@ public class PlayerController : MonoBehaviour
              //Speed increase in each second
          if(forwardSpeed < maxSpeed && movement == true && Game_Manager.restart == false && life == 0 && gameEnd == false && gamePause == false)
          {
-                  forwardSpeed += 0.1f * Time.deltaTime; 
+                  forwardSpeed += 0.5f * Time.deltaTime; 
+                //   anim.speed = anim.speed + 0.1f;
          }
         
         if(Game_Manager.restart == true)
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
             resetTrack = 1;
             desiredLane = 1;
-            forwardSpeed = 8.0f;
+            forwardSpeed = 13.0f;
 
             TrackSpawnManager.TextureUpdate();  // To  update boxes texture 
             for(int i = 0; i < collisionCounts.Length; i++)
