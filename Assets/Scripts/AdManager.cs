@@ -83,21 +83,21 @@ public class AdManager : MonoBehaviour
 
    public void ShowRewardedVideo()
     {
-        ad.loadRewardedVideo(videoID);
+        // ad.loadRewardedVideo(videoID);
       
-         if (ad.isRewardedVideoReady())
-            {
-                ad.showRewardedVideo();
-                Game_Manager.showAds = true;// showAds from gameManager
-                PlayerController.life = 1;
-            }
-            else
-            {
-                ShowRewardedVideo();
-            }  
+        //  if (ad.isRewardedVideoReady())
+        //     {
+        //         ad.showRewardedVideo();
+        //         Game_Manager.showAds = true;// showAds from gameManager
+        //         PlayerController.life = 1;
+        //     }
+        //     else
+        //     {
+        //         ShowRewardedVideo();
+        //     }  
 
-            // Game_Manager.showAds = true;// showAds from gameManager
-            // PlayerController.life = 1;        
+            Game_Manager.showAds = true;// showAds from gameManager
+            PlayerController.life = 1;        
     }
 
     void onInterstitialEvent(string eventName, string msg)

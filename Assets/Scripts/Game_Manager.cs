@@ -205,10 +205,11 @@ public class Game_Manager : MonoBehaviour
         {
             Debug.Log("PlayerController.life == 1");
             tempLife = true;
+           
         }
         else{
                 MainMenuScreen.transform.GetChild(4).gameObject.SetActive(false);
-                MainMenuScreen.transform.GetChild(5).gameObject.SetActive(true);
+                MainMenuScreen.transform.GetChild(0).gameObject.SetActive(true);
                 PlayerController.score = 0; 
                 restart = true;
         }
@@ -220,13 +221,14 @@ public class Game_Manager : MonoBehaviour
 
     public void RestartBtn()
     {
-         if(PlayerController.life == 0)
-        {
+        //  if(PlayerController.life == 0)
+        // {
              BtnSound();
-            PlayerController.movement = true;
+             PlayerController.movement = true;
+            
             MainMenuScreen.transform.GetChild(1).gameObject.SetActive(true);
             MainMenuScreen.transform.GetChild(5).gameObject.SetActive(false);
-        }
+        // }
 
         if(tempLife == true)
         {

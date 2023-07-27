@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool movement, gameEnd, gamePause;
     public static int score;  
     public static int resetTrack;
-    public static float FireBall;
+    public static float FireBall, FireBall_1,FireBall_2, FireBall_3;
     public Vector3 startPosition, yPos;
 
     public static int collisionCount, life;//Counting Ball hits
@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public Material Fire_Mat;
     public Material Ball_Mat;
 
+    float seconds, tempBall;
  
     void Awake()
     {
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
             anim.Play("Idle");
          }
 
-             //Speed increase in each second
+             //Speed increase in each second   // forwardSpeed < maxSpeed &&
          if(forwardSpeed < maxSpeed && movement == true && Game_Manager.restart == false && life == 0 && gameEnd == false && gamePause == false)
          {
                   forwardSpeed += 0.5f * Time.deltaTime; 
@@ -96,7 +97,9 @@ public class PlayerController : MonoBehaviour
 
             resetTrack = 1;
             desiredLane = 1;
-            forwardSpeed = 13.0f;
+            forwardSpeed = 13.0f;  //13
+            SwipeManager.startTouch = SwipeManager.swipeDelta = Vector2.zero;
+            SwipeManager.isDraging = false;
 
             TrackSpawnManager.TextureUpdate();  // To  update boxes texture 
             for(int i = 0; i < collisionCounts.Length; i++)
@@ -151,7 +154,9 @@ public class PlayerController : MonoBehaviour
         }
 
        Movement();
-       StartCoroutine(FireBallTimerCoroutine());
+      
+        StartCoroutine(FireBallTimerCoroutine()); 
+     
        StartCoroutine(RestartTimerCoroutine());
     }
 
@@ -187,7 +192,7 @@ public class PlayerController : MonoBehaviour
                 if (transform.position != targetPosition)
                 {
                     Vector3 diff = targetPosition - transform.position;
-                    Vector3 moveDir = diff.normalized * 30 * Time.deltaTime;
+                    Vector3 moveDir = diff.normalized * 30.0f * Time.deltaTime; // 30
                     if (moveDir.sqrMagnitude < diff.magnitude)
                         controller.Move(moveDir);
                     else
@@ -264,35 +269,94 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             score ++;    
         }
-         else if(other.gameObject.tag == "Fire")
+         else if(other.gameObject.tag == "Fire1" || other.gameObject.tag == "Fire2" || other.gameObject.tag == "Fire3")  
         {
             FireBallHideShow.Add(other.gameObject);
             other.gameObject.SetActive(false);
-            FireBall =  FireBall + 1.0f;   
+            // FireBall =  FireBall + 1.0f;   
+            //  FireBall++;
+            //  Debug.Log("FireBall = " + FireBall);
+
+             if(other.gameObject.tag == "Fire1")
+             {
+                     FireBall++; 
+                     FireBall_1 ++;
+                     // Debug.Log("FireBall_1 = " + FireBall);
+             }else if(other.gameObject.tag == "Fire2")
+             {
+                 FireBall++; 
+                 FireBall_2++;
+                  //Debug.Log("FireBall_2 = " + FireBall);
+
+             }else if(other.gameObject.tag == "Fire3")
+             {
+                  FireBall++; 
+                  FireBall_3++;
+                 // Debug.Log("FireBall_3 = " + FireBall);
+             }
+             
+          
+             Debug.Log(" FireBallC0 = " +  FireBall);
+
         }
     }
 
     // FireBall for spawn for 8 secs
+
+
     private IEnumerator FireBallTimerCoroutine()
     {
-        if (FireBall > 0.0f)
+        while(FireBall == 0.0f)
         {
-            Mainrend.material = Fire_Mat;
-            float seconds = FireBall  * 8.0f;
-
-            for(int i=0; i< seconds; i++)
+              if (FireBall > 0.0f) // FireBall > 0.0f
             {
-                FireButton.SetActive(true);
-                BaseBallBtn.SetActive(false);
-                yield return new WaitForSeconds(1);
-                seconds = FireBall  * 8.0f;
+                Debug.Log("FireBall co = " + FireBall);
+                Mainrend.material = Fire_Mat;
+                
+            //    float seconds = FireBall  * 6.0f;
+
+                // for(int i=0; i< seconds; i++)
+                // {
+                    FireButton.SetActive(true);
+                    BaseBallBtn.SetActive(false);
+                    yield return new WaitForSeconds(6f);  //1
+                //     seconds = FireBall  * 6.0f;
+                // }
+            
             }
+
+             FireBall--;
         }
-      
-        Mainrend.material = Ball_Mat;
-        FireButton.SetActive(false);
-        BaseBallBtn.SetActive(true);
-        FireBall = 0;
+
+          Debug.Log(" FireBall = " +  FireBall);
+                Mainrend.material = Ball_Mat;
+                    FireButton.SetActive(false);
+                    BaseBallBtn.SetActive(true);
+    
+                //seconds =0;
+
+
+    //               if (FireBall > 0.0f) 
+    //      {
+    //          Debug.Log("FireBall co = " + FireBall);
+    //          Mainrend.material = Fire_Mat;
+    //         float seconds = FireBall  * 6.0f;
+
+    //         for(int i=0; i< seconds; i++)
+    //         {
+    //             FireButton.SetActive(true);
+    //             BaseBallBtn.SetActive(false);
+    //             yield return new WaitForSeconds(1f);  //1
+    //             seconds = FireBall  * 6.0f;
+    //         }
+    //            FireBall = 0;
+    //   }
+         
+    //            Mainrend.material = Ball_Mat;
+    //             FireButton.SetActive(false);
+    //             BaseBallBtn.SetActive(true);
+    //             seconds =0;
+  
     }
 
     private IEnumerator RestartTimerCoroutine()
@@ -305,7 +369,7 @@ public class PlayerController : MonoBehaviour
                 BoxesShow[i].GetComponent<BoxCollider>().enabled = false;   
             }
     
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1); //2
 
             for (int i = 0; i <  BoxesShow.Count; i++)  
             { 
