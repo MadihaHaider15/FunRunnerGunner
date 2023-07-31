@@ -44,6 +44,7 @@ public class Game_Manager : MonoBehaviour
     void Start()
     {
         highscores = PlayerPrefs.GetInt("highscores", 0);
+     
         ScoreTxt.text = PlayerController.score.ToString();
         YourScoreTxt.text = PlayerController.score.ToString();
         HighestScoreTxt.text = highscores.ToString();
@@ -125,11 +126,13 @@ public class Game_Manager : MonoBehaviour
         PlayerController.movement = true;
         MainMenuScreen.transform.GetChild(0).gameObject.SetActive(false);
         MainMenuScreen.transform.GetChild(1).gameObject.SetActive(true);
+        PlayerController.score = 0;
+        
     }
 
     public void GamePause()
     {
-         BtnSound();
+        // BtnSound();
         if(MainMenuScreen.transform.GetChild(3).gameObject.activeInHierarchy == false)
         {
             PlayerController.gamePause = true; 
@@ -137,15 +140,31 @@ public class Game_Manager : MonoBehaviour
             MainMenuScreen.transform.GetChild(1).gameObject.SetActive(false);
             MainMenuScreen.transform.GetChild(2).gameObject.SetActive(true);
         }
+        Time.timeScale = 0f; 
     }
+
+     private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            GamePause();
+        }
+        else
+        {
+            // The game is being resumed
+           ResumeGame();
+        }
+    }
+
 
     public void ResumeGame()
     {
-         BtnSound();
+       //  BtnSound();
         PlayerController.gamePause = false; 
         PlayerController.movement = true; 
         MainMenuScreen.transform.GetChild(2).gameObject.SetActive(false);
         MainMenuScreen.transform.GetChild(1).gameObject.SetActive(true);
+        Time.timeScale = 1f;
     }
 
     public void ResumeGameAfterAd()
@@ -156,6 +175,7 @@ public class Game_Manager : MonoBehaviour
         PlayerController.life = 1;
         showAds = false;
         ResetGame();
+        
      }
 
     public void AdsMenu()
@@ -187,7 +207,8 @@ public class Game_Manager : MonoBehaviour
          BtnSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         reset = true;
-        PlayerController.FireBall = 0;   
+        PlayerController.FireBall = 0; 
+        PlayerController.tempBall = 0;  
     }
 
     public void BackToMenuFromGameScoreMenu()
@@ -196,9 +217,10 @@ public class Game_Manager : MonoBehaviour
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
        reset = true;
        PlayerController.FireBall = 0;  
+       PlayerController.tempBall = 0;  
     }
 
-    public void ResetGame()
+    public void ResetGame()  
     {
         BtnSound();
         if(PlayerController.life == 1)
@@ -216,7 +238,8 @@ public class Game_Manager : MonoBehaviour
     
         PlayerController.gameEnd = false;
         reset = true;
-        PlayerController.FireBall = 0; 
+        PlayerController.FireBall = 0;
+        PlayerController.tempBall = 0;   
     }
 
     public void RestartBtn()
@@ -247,13 +270,11 @@ public class Game_Manager : MonoBehaviour
     {
         Instantiate(Ball, BallSpawnPoint.transform.position, BallSpawnPoint.transform.rotation);
 
-        if(PlayerPrefs.GetInt("Audio") ==  1)
-        {
-             FindObjectOfType<AudioManager>().PlaySound("BallFire"); 
-        }
-        else{
-             FindObjectOfType<AudioManager>().StopSound("BallFire"); 
-        }
+        // if(PlayerController.FireBall > 0)   //PlayerPrefs.GetInt("Audio") ==  1
+        // {
+        //      FindObjectOfType<AudioManager>().PlaySound("BallFire"); 
+        // }
+      
     }
 
 

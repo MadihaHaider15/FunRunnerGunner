@@ -41,12 +41,17 @@ public class PlayerController : MonoBehaviour
     public Material Fire_Mat;
     public Material Ball_Mat;
 
-    float seconds, tempBall;
+    float seconds;
+    public static int tempBall, FireBallActive;
+    public Slider mainSlider;
+    public GameObject mainSliderBar;
+
  
     void Awake()
     {
         startPosition = transform.position;
         yPos.y = startPosition.y;
+        FireBallActive = 0;
     }
     void Start()
     {
@@ -69,11 +74,17 @@ public class PlayerController : MonoBehaviour
         }
 
         Coins = GameObject.FindGameObjectsWithTag("Coin");
+         BallSpawn.Ball_Mat =  Ball_Mat;
+         seconds = 6.0f;
+        mainSlider.maxValue = 1.0f;
+
     }
 
     void Update()
     {
         TrackSpawnManager.playerPosZ = transform.position.z;  // for obstacles
+          tempSpeed = forwardSpeed;
+
 
         yPos.x = transform.position.x;  // fixed player's position at y 
         yPos.z = transform.position.z;
@@ -126,6 +137,7 @@ public class PlayerController : MonoBehaviour
             }
             Game_Manager.reset = false;
         }
+        //Debug.Log("forwardSpeed = " + forwardSpeed);
 
         if(life == 1)
         {
@@ -140,14 +152,20 @@ public class PlayerController : MonoBehaviour
             }
             
            TrackSpawnManager.TextureUpdate();   // To  update boxes texture
-            tempSpeed = forwardSpeed;
+            forwardSpeed = tempSpeed;
+            // Debug.Log("forwardSpeedlife = " + forwardSpeed);
+
+            Debug.Log("tempRoad" + TempRoad);
          
             Transform[] allChildren = TempRoad.transform.GetComponentsInChildren<Transform>(true);  // Hide Coins
             for(int i=0; i<allChildren.Length; i++)
             {
-                if(allChildren[i].gameObject.tag == "Coin" && allChildren[i].gameObject.tag == "Fire")
+                Debug.Log("tagObj = " + allChildren[i].gameObject);
+                
+                if(allChildren[i].gameObject.tag == "Coin" || allChildren[i].gameObject.tag == "Fire1" || allChildren[i].gameObject.tag == "Fire2" || allChildren[i].gameObject.tag == "Fire3")
                 {
                     allChildren[i].gameObject.SetActive(false);  
+                     Debug.Log("tag = " + allChildren[i].gameObject.tag);
                 }
             }
             life = 0;
@@ -155,7 +173,27 @@ public class PlayerController : MonoBehaviour
 
        Movement();
       
-        StartCoroutine(FireBallTimerCoroutine()); 
+        
+        //  while (tempBall != 0)
+        //  {
+        //      StartCoroutine(FireBallTimerCoroutine()); 
+        //      tempBall--;
+        //  }
+
+        while (tempBall != 0)
+         {
+            mainSlider.value= mainSlider.maxValue;
+             StartCoroutine(FireBallTimerCoroutine()); 
+           
+              tempBall--;
+         }
+
+         if(FireBall == 0)
+         {
+            seconds = 0.0f;
+         }
+               
+    
      
        StartCoroutine(RestartTimerCoroutine());
     }
@@ -220,6 +258,7 @@ public class PlayerController : MonoBehaviour
                 }
                 anim.Play("Dizzy");
                 TempRoad = hit.transform.parent.gameObject;
+                
            }
           
     }
@@ -276,6 +315,7 @@ public class PlayerController : MonoBehaviour
             // FireBall =  FireBall + 1.0f;   
             //  FireBall++;
             //  Debug.Log("FireBall = " + FireBall);
+            tempBall++;
 
              if(other.gameObject.tag == "Fire1")
              {
@@ -295,8 +335,9 @@ public class PlayerController : MonoBehaviour
                  // Debug.Log("FireBall_3 = " + FireBall);
              }
              
-          
+            // tempBall = Mathf.RoundToInt(FireBall);
              Debug.Log(" FireBallC0 = " +  FireBall);
+
 
         }
     }
@@ -306,56 +347,67 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator FireBallTimerCoroutine()
     {
-        while(FireBall == 0.0f)
-        {
-              if (FireBall > 0.0f) // FireBall > 0.0f
-            {
-                Debug.Log("FireBall co = " + FireBall);
-                Mainrend.material = Fire_Mat;
-                
-            //    float seconds = FireBall  * 6.0f;
-
-                // for(int i=0; i< seconds; i++)
-                // {
-                    FireButton.SetActive(true);
-                    BaseBallBtn.SetActive(false);
-                    yield return new WaitForSeconds(6f);  //1
-                //     seconds = FireBall  * 6.0f;
-                // }
-            
-            }
-
-             FireBall--;
-        }
-
-          Debug.Log(" FireBall = " +  FireBall);
-                Mainrend.material = Ball_Mat;
-                    FireButton.SetActive(false);
-                    BaseBallBtn.SetActive(true);
     
-                //seconds =0;
+               Mainrend.material = Fire_Mat;
+                FireBallActive = 1;
+              
+                FireButton.SetActive(true);
+                mainSliderBar.SetActive(true);
+                BaseBallBtn.SetActive(false);
+    
+                //yield return new WaitForSeconds(6.0f);  //1
 
+            seconds = FireBall  * 5.0f;
 
-    //               if (FireBall > 0.0f) 
-    //      {
-    //          Debug.Log("FireBall co = " + FireBall);
-    //          Mainrend.material = Fire_Mat;
-    //         float seconds = FireBall  * 6.0f;
+            for(int i=0; i< seconds; i++)
+            {
+                yield return new WaitForSeconds(1f);  //1
+                  mainSlider.value -= 0.23f;
 
-    //         for(int i=0; i< seconds; i++)
-    //         {
-    //             FireButton.SetActive(true);
-    //             BaseBallBtn.SetActive(false);
-    //             yield return new WaitForSeconds(1f);  //1
-    //             seconds = FireBall  * 6.0f;
-    //         }
-    //            FireBall = 0;
-    //   }
+                //   if(seconds != 0)
+                //   {
+                //          mainSlider.value= mainSlider.maxValue;
+                //   }
+
+                // if( mainSlider.value <= mainSlider.maxValue)
+                // {
+                     
+               // }
+
+               // seconds = FireBall  * 6.0f;
+            }
          
-    //            Mainrend.material = Ball_Mat;
-    //             FireButton.SetActive(false);
-    //             BaseBallBtn.SetActive(true);
-    //             seconds =0;
+     
+            Mainrend.material = Ball_Mat;
+             
+            FireButton.SetActive(false);
+            BaseBallBtn.SetActive(true);
+             mainSliderBar.SetActive(false);
+            FireBallActive = 0;
+            mainSlider.value= mainSlider.maxValue;
+
+    
+
+        // if (FireBall > 0.0f) 
+        //  {
+        //      Debug.Log("FireBall co = " + FireBall);
+        //      Mainrend.material = Fire_Mat;
+        //     float seconds = FireBall  * 6.0f;
+
+        //     for(int i=0; i< seconds; i++)
+        //     {
+        //         FireButton.SetActive(true);
+        //         BaseBallBtn.SetActive(false);
+        //         yield return new WaitForSeconds(1f);  //1
+        //         seconds = FireBall  * 6.0f;
+        //     }
+        //        FireBall = 0;
+        // }
+         
+        //     Mainrend.material = Ball_Mat;
+        //     FireButton.SetActive(false);
+        //     BaseBallBtn.SetActive(true);
+        //     seconds =0;
   
     }
 
@@ -369,7 +421,7 @@ public class PlayerController : MonoBehaviour
                 BoxesShow[i].GetComponent<BoxCollider>().enabled = false;   
             }
     
-            yield return new WaitForSeconds(1); //2
+            yield return new WaitForSeconds(1); //2  // 2
 
             for (int i = 0; i <  BoxesShow.Count; i++)  
             { 

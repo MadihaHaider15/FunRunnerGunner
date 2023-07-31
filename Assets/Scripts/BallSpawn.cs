@@ -9,7 +9,8 @@ public class BallSpawn : MonoBehaviour
     Rigidbody rb;
     Renderer Mainrend;
     public List<Texture> texture;
-    public Material Ball_Mat;
+    public static Material Ball_Mat;
+     public Material Fire_Mat;
  
     void Start()
     {
@@ -21,7 +22,7 @@ public class BallSpawn : MonoBehaviour
     void Update()
     {
          Time.timeScale = 1.2f;
-         if(PlayerController.FireBall == 0)
+         if(PlayerController.FireBallActive == 0)
          {
              Mainrend.material = Ball_Mat;
          }
@@ -29,8 +30,10 @@ public class BallSpawn : MonoBehaviour
     void OnCollisionEnter(Collision collision)
    {   
 
-        if(PlayerController.FireBall > 0 )
+        // Debug.Log("Mainrend.materials[0].name = " + Mainrend.materials[0].name);
+        if(PlayerController.FireBallActive == 1)
         {
+            Debug.Log("Mainrend.materials[0] " + Mainrend.materials[0]);
                 gameObject.SetActive(false);
                 TextureScoreChange(collision.gameObject);
                 if(collision.gameObject.name == "Cube")
@@ -41,6 +44,7 @@ public class BallSpawn : MonoBehaviour
         }
       else   
         {
+             Debug.Log("Mainrend.materials[0] " + Mainrend.materials[0]);
                 PlayerController.score = PlayerController.score +1;
                 int col = TextureColChange(collision.gameObject);  
                 Renderer rend = collision.gameObject.GetComponent<Renderer>();  
@@ -49,6 +53,7 @@ public class BallSpawn : MonoBehaviour
                  if(col == 0 && collision.gameObject.name == "Cube")
                 {
                     collision.gameObject.SetActive(false);
+                    BoxDestroySound();
                 }  
                 else if(col == 1)
                 {
@@ -86,10 +91,10 @@ public class BallSpawn : MonoBehaviour
                     rend.material.mainTexture = texture[9];
                 }
 
-                if(collision.gameObject.name == "Cube")
-                {
-                      BoxDestroySound();
-                }
+                // if(collision.gameObject.name == "Cube")
+                // {
+                //       //BoxDestroySound();
+                // }
         }
        
           gameObject.SetActive(false);
