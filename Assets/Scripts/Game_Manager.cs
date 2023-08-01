@@ -140,21 +140,29 @@ public class Game_Manager : MonoBehaviour
             MainMenuScreen.transform.GetChild(1).gameObject.SetActive(false);
             MainMenuScreen.transform.GetChild(2).gameObject.SetActive(true);
         }
-        Time.timeScale = 0f; 
+        //Time.timeScale = 0f; 
     }
 
-     private void OnApplicationPause(bool pauseStatus)
+    //  private void OnApplicationPause(bool pauseStatus)
+    // {
+    //     Debug.Log("Application = " + pauseStatus);
+    //     if (pauseStatus)
+    //     {
+    //         GamePause();
+    //     }
+    // }
+     void OnApplicationFocus(bool hasFocus)
     {
-        if (pauseStatus)
+        if(!hasFocus)
         {
-            GamePause();
-        }
-        else
-        {
-            // The game is being resumed
-           ResumeGame();
+             GamePause();
         }
     }
+
+    // void OnApplicationPause(bool pauseStatus)
+    // {
+    //     isPaused = pauseStatus;
+    // }
 
 
     public void ResumeGame()
@@ -164,7 +172,7 @@ public class Game_Manager : MonoBehaviour
         PlayerController.movement = true; 
         MainMenuScreen.transform.GetChild(2).gameObject.SetActive(false);
         MainMenuScreen.transform.GetChild(1).gameObject.SetActive(true);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 
     public void ResumeGameAfterAd()

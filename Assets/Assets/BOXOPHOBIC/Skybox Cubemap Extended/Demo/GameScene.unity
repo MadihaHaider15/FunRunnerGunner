@@ -33831,7 +33831,6 @@ RectTransform:
   - {fileID: 427935359}
   - {fileID: 1822569084}
   - {fileID: 1774296052}
-  - {fileID: 1242738085}
   m_Father: {fileID: 922484011}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49353,20 +49352,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242738084}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07818385, y: 0.05883794, z: 0.05883794}
+  m_LocalScale: {x: 2.2025359, y: 2.3096766, z: 0.05332558}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 113871451}
   - {fileID: 2032254625}
   - {fileID: 1921653312}
-  m_Father: {fileID: 872791566}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 948.6, y: 513}
+  m_AnchoredPosition: {x: 688.34143, y: 466.62476}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242738086
@@ -72685,7 +72684,7 @@ GameObject:
   - component: {fileID: 1808142465}
   - component: {fileID: 1808142468}
   m_Layer: 5
-  m_Name: 'RestartBtn '
+  m_Name: 'HomeBtn '
   m_TagString: PlayBtn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72795,7 +72794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3286163911610860551, guid: b74e92d4f5e54414795bbfa016e29aa5, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: c94f0693fe09f2b4cb17c20072fab6d5, type: 3}
   m_PreserveAspect: 0
 --- !u!1001 &1811757053
 PrefabInstance:

@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     float seconds;
     public static int tempBall, FireBallActive;
-    public Slider mainSlider;
-    public GameObject mainSliderBar;
+    // public Slider mainSlider;
+    // public GameObject mainSliderBar;
 
  
     void Awake()
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         Coins = GameObject.FindGameObjectsWithTag("Coin");
          BallSpawn.Ball_Mat =  Ball_Mat;
          seconds = 6.0f;
-        mainSlider.maxValue = 1.0f;
+      //  mainSlider.maxValue = 1.0f;
 
     }
 
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
         while (tempBall != 0)
          {
-            mainSlider.value= mainSlider.maxValue;
+           // mainSlider.value= mainSlider.maxValue;
              StartCoroutine(FireBallTimerCoroutine()); 
            
               tempBall--;
@@ -352,7 +352,7 @@ public class PlayerController : MonoBehaviour
                 FireBallActive = 1;
               
                 FireButton.SetActive(true);
-                mainSliderBar.SetActive(true);
+              //  mainSliderBar.SetActive(true);
                 BaseBallBtn.SetActive(false);
     
                 //yield return new WaitForSeconds(6.0f);  //1
@@ -362,7 +362,7 @@ public class PlayerController : MonoBehaviour
             for(int i=0; i< seconds; i++)
             {
                 yield return new WaitForSeconds(1f);  //1
-                  mainSlider.value -= 0.23f;
+                //  mainSlider.value -= 0.23f;
 
                 //   if(seconds != 0)
                 //   {
@@ -382,32 +382,9 @@ public class PlayerController : MonoBehaviour
              
             FireButton.SetActive(false);
             BaseBallBtn.SetActive(true);
-             mainSliderBar.SetActive(false);
+           //  mainSliderBar.SetActive(false);
             FireBallActive = 0;
-            mainSlider.value= mainSlider.maxValue;
-
-    
-
-        // if (FireBall > 0.0f) 
-        //  {
-        //      Debug.Log("FireBall co = " + FireBall);
-        //      Mainrend.material = Fire_Mat;
-        //     float seconds = FireBall  * 6.0f;
-
-        //     for(int i=0; i< seconds; i++)
-        //     {
-        //         FireButton.SetActive(true);
-        //         BaseBallBtn.SetActive(false);
-        //         yield return new WaitForSeconds(1f);  //1
-        //         seconds = FireBall  * 6.0f;
-        //     }
-        //        FireBall = 0;
-        // }
-         
-        //     Mainrend.material = Ball_Mat;
-        //     FireButton.SetActive(false);
-        //     BaseBallBtn.SetActive(true);
-        //     seconds =0;
+           // mainSlider.value= mainSlider.maxValue;
   
     }
 
